@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     outboundMessages.unshift({
         role: 'system',
-        content: chatbotPrompt
+        content: chatbotPrompt,
     })
 
     const payload: OpenAIStreamPayload = {
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         top_p: 1,
         frequency_penalty: 0, // How often a certain word will occur
         presence_penalty: 0, // Value upto 2. Higher the presence penalty, the lesser it will use the words that are already present in the prompt
-        max_token: 150, // Response will be roughly 150 words
+        max_tokens: 150, // Response will be roughly 150 words
         stream: true, // Required to have a readable stream
         n: 1
     }
