@@ -1,5 +1,30 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Use TypeScript predefined functional component
+
+Go to VS Code Settings (Bottom Left) -> Snippets -> Search for 'typescriptreact.json' and paste the code below
+
+"Typescript React Function Component": {
+    "prefix": "fc",
+    "body": [
+      "import { FC } from 'react'",
+      "",
+      "interface ${TM_FILENAME_BASE}Props {",
+      "  $1",
+      "}",
+      "",
+      "const $TM_FILENAME_BASE: FC<${TM_FILENAME_BASE}Props> = ({$2}) => {",
+      "  return <div>$TM_FILENAME_BASE</div>",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE"
+    ],
+    "description": "Typescript React Function Component"
+  },
+
+  Now, while creating a new component, you can type 'fc' and hit enter to create a TypeScript functional component
+
+
 ## Getting Started
 
 First, run the development server:
