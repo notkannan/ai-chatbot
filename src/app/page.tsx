@@ -1,7 +1,7 @@
-import Image from "next/image";
+"use client";
 
+import AuthForm from "./auth/authform/page";
+import "./globals.css";
 export default function Home() {
-  return (
-    <main className="absolute inset-0 flex justify-center items-center">Website content</main>
-  );
+  return <AuthForm />;
 }
