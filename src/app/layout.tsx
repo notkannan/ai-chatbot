@@ -1,23 +1,35 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
+
+import { ThemeProvider } from "next-themes";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { AuthProvider } from "../context/AuthContext";
+import Providers from "./components/Providers";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "NEU Botsky",
-  description: "Your AI-powered NEU chatbot",
-};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
+      <head>
+        <link rel="icon" href="/Logo.jpeg" type="image/jpeg" />
+        <title>NEU Husky Bot</title>
+      </head>
+      <body>
+        <ThemeProvider attribute="class">
+          <AuthProvider>
+            <Providers>
+              <div className="layout">
+                <Header />
+                <main className="content">{children}</main>
+                <Footer />
+              </div>
+            </Providers>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
