@@ -1,19 +1,25 @@
 "use client";
 
+import { Button } from "@/components/ui/button"; // Import Shadcn UI Button
+import { Input } from "@/components/ui/input"; // Import Shadcn UI Input
 import { MessagesContext } from "@/context/messages";
 import { cn } from "@/lib/utils";
 import { Message } from "@/lib/validators/message";
 import { useMutation } from "@tanstack/react-query";
 import { CornerDownLeft, Loader2 } from "lucide-react";
 import { nanoid } from "nanoid";
-import { FC, HTMLAttributes, useContext, useRef, useState } from "react";
+import { FC, HTMLAttributes, useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import TextareaAutosize from "react-textarea-autosize";
 
-// Interface below allows the ChatInput component to receive all the attributes that a normal div tag gets
-interface ChatInputProps extends HTMLAttributes<HTMLDivElement> {}
+interface ChatInputProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: "page" | "accordion"; // Add a variant prop to distinguish usage
+}
 
-const ChatInput: FC<ChatInputProps> = ({ className, ...props }) => {
+const ChatInput: FC<ChatInputProps> = ({
+  className,
+  variant = "accordion",
+  ...props
+}) => {
   const [input, setInput] = useState<string>("");
   const {
     messages,
@@ -22,8 +28,6 @@ const ChatInput: FC<ChatInputProps> = ({ className, ...props }) => {
     updateMessage,
     setIsMessageUpdating,
   } = useContext(MessagesContext);
-  // Grants us access to the Textarea DOM node
-  const textareaRef = useRef<null | HTMLTextAreaElement>(null);
 
   const { mutate: sendMessage, isPending } = useMutation({
     mutationFn: async (message: Message) => {
@@ -68,62 +72,62 @@ const ChatInput: FC<ChatInputProps> = ({ className, ...props }) => {
         updateMessage(id, (prev) => prev + chunkValue);
       }
 
-      // Cleanup
       setIsMessageUpdating(false);
       setInput("");
-      setTimeout(() => {
-        textareaRef.current?.focus();
-      }, 10);
     },
     onError(_, message) {
       toast.error("Something went wrong. Please try again.");
       removeMessage(message.id);
-      textareaRef.current?.focus();
     },
   });
 
-  // Code below allows the ChatInput component to receive all the attributes that a normal div tag gets
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      const message: Message = {
+        id: nanoid(),
+        isUserMessage: true,
+        text: input,
+      };
+      sendMessage(message);
+    }
+  };
+
   return (
     <div {...props} className={cn("border-t border-zinc-300", className)}>
-      <div className="relative mt-4 flex-1 overflow-hidden rounded-lg border-none outline-none">
-        <TextareaAutosize
-          ref={textareaRef}
-          rows={2}
-          maxRows={4}
+      <div className="flex items-center mt-4">
+        <Input
           value={input}
-          disabled={isPending}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-
-              const message: Message = {
-                id: nanoid(),
-                isUserMessage: true,
-                text: input,
-              };
-              sendMessage(message);
-            }
-          }}
           onChange={(e) => setInput(e.target.value)}
-          autoFocus
+          onKeyDown={handleKeyDown}
           placeholder="Got any questions?"
-          className="peer disabled:opacity-50 pr-14 resize-none block w-full border-0 bg-zinc-100 py-1.5 text-gray-900 focus:ring-0 text-sm sm:leading-6"
+          className={cn("flex-1", {
+            "bg-white text-gray-900 ": variant === "accordion", // Adjust colors for accordion
+            "bg-white text-gray-900 dark:bg-black dark:text-gray-100":
+              variant === "page", // Light and dark mode for page
+          })}
+          disabled={isPending}
         />
-
-        <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
-          <kbd className="inline-flex items-center rounded border border-gray-200 bg-white px-1 font-sans text-xs text-gray-400">
-            {isPending ? (
-              <Loader2 className="w-3 h-3 animate-spin" />
-            ) : (
-              <CornerDownLeft className="w-3 h-3" />
-            )}
-          </kbd>
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
-        />
+        <Button
+          onClick={() => {
+            const message: Message = {
+              id: nanoid(),
+              isUserMessage: true,
+              text: input,
+            };
+            sendMessage(message);
+          }}
+          disabled={isPending || !input.trim()}
+          className={cn("ml-2 ", {
+            "bg-black text-white hover:bg-gray-800": variant === "accordion", // Black button for accordion
+          })}
+        >
+          {isPending ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <CornerDownLeft className="w-4 h-4" />
+          )}
+        </Button>
       </div>
     </div>
   );

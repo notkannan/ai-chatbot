@@ -11,7 +11,7 @@ import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
 
-const Chat: FC = ({}) => {
+const Chat: FC = () => {
   const router = useRouter(); // Initialize useRouter
 
   const handleMaximize = () => {
@@ -22,25 +22,25 @@ const Chat: FC = ({}) => {
     <Accordion
       type="single"
       collapsible
-      className="relative bg-white z-10  shadow"
+      className="relative bg-white z-10 shadow-lg transition-all duration-300"
     >
       <AccordionItem value="item-1">
-        <div className="fixed right-8 bottom-24 md:bottom-16 w-80 bg-white border border-gray-200 rounded-md overflow-hidden">
+        <div className="fixed right-4 bottom-24 md:bottom-16 w-80 bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md">
           <div className="w-full h-full flex flex-col">
-            <AccordionTrigger className="px-6 border-b border-zinc-300 flex justify-between items-center">
+            <AccordionTrigger className="px-4 py-2 border-b border-gray-300 flex justify-between items-center">
               <ChatHeader />
               <button
                 onClick={handleMaximize}
-                className="ml-2 mr-1 p-1 rounded-full  hover:bg-gray-200  border-gray-300"
+                className="ml-2 p-1 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label="Maximize Chat"
               >
                 <Maximize2 className="w-4 h-4 text-gray-600" />
               </button>
             </AccordionTrigger>
-            <AccordionContent>
+            <AccordionContent className="transition-all duration-300 ease-in-out">
               <div className="flex flex-col h-80">
-                <ChatMessages className="px-2 py-3 flex-1" />
-                <ChatInput className="px-4" />
+                <ChatMessages className="px-4 py-3 flex-1" />
+                <ChatInput className="px-4 py-2 border-t border-gray-300" />
               </div>
             </AccordionContent>
           </div>

@@ -21,7 +21,7 @@ const ChatPage: FC = () => {
           <ScrollArea className="flex-1 p-4">
             <ChatMessages className="p-4" />
           </ScrollArea>
-          <ChatInput className="p-4" />
+          <ChatInput variant="page" className="p-4" />
         </CardContent>
       </Card>
     </div>
