@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/Logo.jpeg" type="image/jpeg" />
-        <title>MyBoilerPlate</title>
+        <title>NEU Husky Bot</title>
       </head>
       <body>
         <ThemeProvider attribute="class">

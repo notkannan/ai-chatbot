@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { Briefcase, FileText, Rocket, Zap } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 import {
   SiFirebase,
@@ -18,6 +19,7 @@ import {
   SiUpstash,
   SiVercel,
 } from "react-icons/si";
+import logo from "../../../assets/Logo.jpeg";
 
 const HomePage: React.FC = () => {
   const features = [
@@ -120,16 +122,28 @@ const HomePage: React.FC = () => {
               <CardContent className="p-6 flex flex-col flex-grow overflow-hidden">
                 <ScrollArea className="flex-grow pr-4 overflow-y-auto">
                   <div className="space-y-8 pb-8">
-                    <section>
-                      <h2 className="text-2xl font-semibold mb-4">
-                        About NEU Husky Bot
-                      </h2>
-                      <p className="text-muted-foreground">
-                        NEU Husky Bot is your intelligent assistant for
-                        navigating the Northeastern University ecosystem.
-                        Whether you need help with coursework, campus events, or
-                        general inquiries, NEU Husky Bot is here to assist you.
-                      </p>
+                    <section className="flex flex-col md:flex-row items-center">
+                      <div className="flex-1">
+                        <h2 className="text-2xl font-semibold mb-4">
+                          About NEU Husky Bot
+                        </h2>
+                        <p className="text-muted-foreground">
+                          NEU Husky Bot is your intelligent assistant for
+                          navigating the Northeastern University ecosystem.
+                          Whether you need help with coursework, campus events,
+                          or general inquiries, NEU Husky Bot is here to assist
+                          you.
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 mt-4 md:mt-0 md:ml-8">
+                        <Image
+                          src={logo}
+                          alt="NEU Husky Bot Logo"
+                          width={150}
+                          height={150}
+                          className="rounded-full"
+                        />
+                      </div>
                     </section>
 
                     <section>

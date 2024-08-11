@@ -57,11 +57,11 @@ const Header: React.FC = () => {
         {/* Logo and App Name */}
         <div className="flex items-center space-x-2">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={logo.src} alt="MyBoilerPlate Logo" />
-            <AvatarFallback>MBP</AvatarFallback>
+            <AvatarImage src={logo.src} alt="NEU Husky Bot Logo" />
+            <AvatarFallback>NHB</AvatarFallback>
           </Avatar>
           <span className="text-xl font-bold hidden sm:inline">
-            MyBoilerPlate
+            NEU Husky Bot
           </span>
         </div>
 

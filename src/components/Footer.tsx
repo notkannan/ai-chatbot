@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     <footer className="py-4 px-4 border-t border-gray-200 dark:border-gray-700">
       <div className="max-w-lg mx-auto flex flex-col md:flex-row justify-between items-center">
         <p className="text-gray-600 dark:text-gray-300 mb-2 md:mb-0">
-          © {new Date().getFullYear()} MyBoilerPlate. All rights reserved.
+          © {new Date().getFullYear()} NEU Husky Bot. All rights reserved.
         </p>
         <div className="flex gap-4">
           <a
