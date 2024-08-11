@@ -1,18 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button"; // Import Shadcn UI Button
-import { Input } from "@/components/ui/input"; // Import Shadcn UI Input
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { MessagesContext } from "@/context/messages";
 import { cn } from "@/lib/utils";
 import { Message } from "@/lib/validators/message";
 import { useMutation } from "@tanstack/react-query";
 import { CornerDownLeft, Loader2 } from "lucide-react";
 import { nanoid } from "nanoid";
-import { FC, HTMLAttributes, useContext, useState } from "react";
+import { FC, HTMLAttributes, useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 interface ChatInputProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: "page" | "accordion"; // Add a variant prop to distinguish usage
+  variant?: "page" | "accordion";
 }
 
 const ChatInput: FC<ChatInputProps> = ({
@@ -21,6 +21,12 @@ const ChatInput: FC<ChatInputProps> = ({
   ...props
 }) => {
   const [input, setInput] = useState<string>("");
+  const [preferences, setPreferences] = useState({
+    language: "Spanish",
+    tone: "Friendly",
+    responseLength: "Medium",
+  });
+
   const {
     messages,
     addMessage,
@@ -29,6 +35,13 @@ const ChatInput: FC<ChatInputProps> = ({
     setIsMessageUpdating,
   } = useContext(MessagesContext);
 
+  useEffect(() => {
+    const savedPreferences = localStorage.getItem("chatbotPreferences");
+    if (savedPreferences) {
+      setPreferences(JSON.parse(savedPreferences));
+    }
+  }, []);
+
   const { mutate: sendMessage, isPending } = useMutation({
     mutationFn: async (message: Message) => {
       const response = await fetch("/api/message", {
@@ -36,7 +49,10 @@ const ChatInput: FC<ChatInputProps> = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: [message] }),
+        body: JSON.stringify({
+          messages: [message],
+          preferences,
+        }),
       });
 
       if (!response.ok) {
@@ -102,9 +118,9 @@ const ChatInput: FC<ChatInputProps> = ({
           onKeyDown={handleKeyDown}
           placeholder="Got any questions?"
           className={cn("flex-1", {
-            "bg-white text-gray-900 ": variant === "accordion", // Adjust colors for accordion
+            "bg-white text-gray-900": variant === "accordion",
             "bg-white text-gray-900 dark:bg-black dark:text-gray-100":
-              variant === "page", // Light and dark mode for page
+              variant === "page",
           })}
           disabled={isPending}
         />
@@ -118,8 +134,8 @@ const ChatInput: FC<ChatInputProps> = ({
             sendMessage(message);
           }}
           disabled={isPending || !input.trim()}
-          className={cn("ml-2 ", {
-            "bg-black text-white hover:bg-gray-800": variant === "accordion", // Black button for accordion
+          className={cn("ml-2", {
+            "bg-black text-white hover:bg-gray-800": variant === "accordion",
           })}
         >
           {isPending ? (
