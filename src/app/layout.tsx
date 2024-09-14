@@ -7,8 +7,8 @@ import Providers from "./components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NEU HuskyBot",
-  description: "Your AI-powered NEU chatbot",
+  title: "NEU IMBot",
+  description: "Your AI-powered Northeastern's Intramurals chatbot",
 };
 
 export default function RootLayout({
