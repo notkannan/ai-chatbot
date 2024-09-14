@@ -58,6 +58,36 @@ Additional Policies:
 - Harassment and hazing strictly prohibited
 - Vandalism of university property will be reported to campus police and conduct office
 - Intramural program does not recognize coaches
+Sports Offered:
+- Soccer League (7v7)
+- KanJam
+- Cricket
+- Softball
+- Basketball
+- Volleyball
+- Flag Football
+- Chess
+- Broomball
+- Badminton
+- Cornhole
+- Extreme Dodgeball
+- Fantasy Football
+- Ice Hockey
+- Kickball League
+- Overwatch 2 League
+- Pickleball
+- Connect4 Tournament
+- Sand Volleyball
+- Settlers of Catan
+- Spikeball
+- Squash
+- Table Tennis
+- Tennis
+- Ultimate League
+- Valorant
+- Virtual Chess League
+- Wallyball @ Cabot
+- Wiffleball
 
 Certainly! Here's the contact information and links provided in the document:
 Contact Information:
@@ -81,4 +111,17 @@ Additional Notes:
 - For protests, defaults, and other submissions, the document refers to the University Recreation website (https://recreation.northeastern.edu/) without specifying exact pages.
 - The handbook itself is dated, with the file name suggesting it's from December 22, 2022 (20221222113018.pdf).
 Remember that this information might be subject to change, so it's always a good idea to verify these details on the current Northeastern University website or with the Intramural Sports office directly.
+General Rules:
+- All players must present their valid Northeastern University Photo ID to play.
+- Jewelry is not allowed to be worn by any participant during an Intramural event. 
+- GAME TIME IS FORFEIT TIME! The minimum number of players must have their Husky Cards turned in, be
+present on the field and in uniform for a team not to forfeit.
+- 3 Unsportsmanlike Penalties will result in a team disqualification regardless of the score. 2 Personal
+Unsportsmanlike Penalties will result in the player leaving the game. Only a team's designated Captain is allowed
+to confer with the officials. There is a ZERO TOLERANCE policy for any unsportsmanlike behavior directed towards
+players, officials, and staff.
+- The supervisor on duty reserves the right to remove any player from competition who has violated any NU
+Intramural Policy or Rule and/or endangered any player or IM staff member. Ejected players must leave the
+facility.
+- Participants are not allowed to play in a manner that is potentially dangerous or reckless.
 `
