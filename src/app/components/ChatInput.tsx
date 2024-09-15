@@ -111,7 +111,7 @@ const ChatInput: FC<ChatInputProps> = ({className, ...props}) => {
                 {isPending ? <Loader2 className='w-3 h-3 animate-spin'/> : <CornerDownLeft className='w-3 h-3'/>}
             </kbd>
         </div>
-
+        
         <div aria-hidden='true' className='absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-[#f97316]'/>
     </div>
   </div>
