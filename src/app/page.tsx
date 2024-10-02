@@ -13,7 +13,7 @@ export default function Home() {
         <Image
           src={NEU}
           alt="Northeastern University's Logo"
-          width={350}
+          width={375}
         ></Image>
       </Link>
       <div className="h-[450px] border-l border-l-gray-500 rounded-2xl"></div>
@@ -24,7 +24,7 @@ export default function Home() {
         <Image
           src={IM}
           alt="Imtramural League's Logo"
-          width={350}
+          width={375}
           className="ml-10"
         ></Image>
       </Link>
