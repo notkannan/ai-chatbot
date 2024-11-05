@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     })
 
     const payload: OpenAIStreamPayload = {
-        model: 'gpt-4',
+        model: 'gpt-4o-mini',
         messages: outboundMessages,
         temperature: 0.4,
         top_p: 1,
