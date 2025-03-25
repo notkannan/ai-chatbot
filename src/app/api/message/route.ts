@@ -28,6 +28,7 @@ export async function POST(req: Request) {
     )
 
     const relevantDocs = await vectorStore.similaritySearch(lastMessage.text, 3)
+    
 
     const relevantContext = relevantDocs.map(doc => doc.pageContent).join('\n')
 
