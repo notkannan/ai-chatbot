@@ -23,7 +23,7 @@ export default function Home() {
       >
         <Image
           src={IM}
-          alt="Imtramural League's Logo"
+          alt="Northeastern University Intramural League's Logo"
           width={375}
           className="ml-10"
         ></Image>
